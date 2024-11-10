@@ -31,7 +31,7 @@ public class WebSecurityConfiguration {
 	    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	        http.csrf().disable()
 	            .authorizeHttpRequests()
-	                .requestMatchers("/signup","/login").permitAll() // Allow public access to signup
+	                .requestMatchers("/signup","/login","/api/hello").permitAll() // Allow public access to signup
 	                .and()
 	                .authorizeHttpRequests().requestMatchers("/api/**")
 	                .authenticated() // Require authentication for all other requests

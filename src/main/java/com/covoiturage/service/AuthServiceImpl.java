@@ -20,10 +20,10 @@ public class AuthServiceImpl implements AuthService {
 	}
 	
 	@Override
-	public boolean createUser(SignupRequest signupRequest) {
+	public User createUser(SignupRequest signupRequest) {
 		//check if he already exists
 		if(userRepository.existsByEmail(signupRequest.getEmail())) {
-			return false;
+			return null;
 		}
 		User user = new User();
 		
@@ -34,6 +34,6 @@ public class AuthServiceImpl implements AuthService {
 		user.setUserPassword(hashPassowrd);
 		userRepository.save(user);
 
-		return true;
+		return user;
 	}
 }
